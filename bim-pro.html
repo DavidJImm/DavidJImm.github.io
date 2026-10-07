@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIM Pro | Revit Productivity Add-in</title>
+<meta name="description" content="BIM Pro is a Revit productivity add-in with practical tools for BIM and production workflows.">
+<style>
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: #1f2937;
+        background: #f5f7fa;
+        line-height: 1.6;
+    }
+    .hero {
+        background: linear-gradient(135deg, #071b45 0%, #0759b7 55%, #12a8ef 100%);
+        color: white;
+        padding: 56px 24px 64px;
+    }
+    .hero-inner {
+        max-width: 1050px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 42px;
+    }
+    .logo {
+        width: 190px;
+        height: 190px;
+        object-fit: cover;
+        border-radius: 34px;
+        flex: 0 0 auto;
+        box-shadow: 0 18px 45px rgba(0,0,0,.28);
+    }
+    h1 {
+        margin: 0 0 10px;
+        font-size: clamp(38px, 6vw, 58px);
+        line-height: 1.05;
+        letter-spacing: -.02em;
+    }
+    .tagline {
+        margin: 0;
+        font-size: clamp(20px, 3vw, 28px);
+        font-weight: 600;
+    }
+    .hero p {
+        margin: 18px 0 0;
+        max-width: 720px;
+        font-size: 17px;
+        color: #e7f4ff;
+    }
+    .container {
+        max-width: 1050px;
+        margin: 0 auto;
+        padding: 52px 24px;
+    }
+    h2 {
+        color: #123b73;
+        margin: 0 0 14px;
+        font-size: 32px;
+    }
+    .intro {
+        font-size: 18px;
+        max-width: 900px;
+    }
+    .versions {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 9px 16px;
+        border-radius: 999px;
+        background: #e6f2ff;
+        color: #0759b7;
+        font-weight: 700;
+    }
+    .tools {
+        margin-top: 46px;
+    }
+    .tool-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin-top: 24px;
+    }
+    .tool {
+        background: white;
+        border-radius: 16px;
+        padding: 22px 18px 20px;
+        box-shadow: 0 5px 20px rgba(16, 43, 76, .09);
+        text-align: center;
+        border: 1px solid #e5eaf0;
+    }
+    .tool img {
+        width: 150px;
+        height: 125px;
+        object-fit: contain;
+        margin: 0 auto 12px;
+        display: block;
+    }
+    .tool h3 {
+        margin: 0;
+        color: #173e72;
+        font-size: 19px;
+    }
+    .workflow {
+        margin-top: 50px;
+        background: white;
+        border-radius: 18px;
+        padding: 30px;
+        box-shadow: 0 5px 20px rgba(16, 43, 76, .08);
+    }
+    .support {
+        margin-top: 44px;
+    }
+    footer {
+        background: #0b1f3a;
+        color: #dbe8f5;
+        text-align: center;
+        padding: 28px 20px;
+        font-size: 14px;
+    }
+    a { color: #0b67c2; }
+    @media (max-width: 760px) {
+        .hero-inner { flex-direction: column; text-align: center; }
+        .hero p { margin-left: auto; margin-right: auto; }
+        .tool-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 500px) {
+        .tool-grid { grid-template-columns: 1fr; }
+        .logo { width: 160px; height: 160px; }
+    }
+</style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-inner">
+        <img class="logo" src="bim-pro-logo.png" alt="BIM Pro logo">
+        <div>
+            <h1>BIM Pro</h1>
+            <p class="tagline">Spend Less Time Managing Revit, and More Time Designing.</p>
+            <p>
+                BIM Pro is a Revit productivity add-in that puts practical BIM and production
+                tools directly inside Revit, helping users spend less time managing project
+                data and more time designing.
+            </p>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section>
+        <h2>Built for Revit Productivity</h2>
+        <p class="intro">
+            BIM Pro provides practical tools for structural, architectural, engineering,
+            and BIM professionals who want to reduce repetitive tasks and improve
+            consistency within their Revit workflow.
+        </p>
+        <div class="versions">Supports Revit 2024, 2025, 2026 &amp; 2027</div>
+    </section>
+
+    <section class="tools">
+        <h2>BIM Pro Tools</h2>
+        <div class="tool-grid">
+            <article class="tool">
+                <img src="workset-memory.png" alt="Workset Memory">
+                <h3>Workset Memory</h3>
+            </article>
+            <article class="tool">
+                <img src="pdf-dwg-export.png" alt="PDF / DWG Export">
+                <h3>PDF / DWG Export</h3>
+            </article>
+            <article class="tool">
+                <img src="file-coordinates.png" alt="File Coordinates">
+                <h3>File Coordinates</h3>
+            </article>
+            <article class="tool">
+                <img src="save-session.png" alt="Save Session">
+                <h3>Save Session</h3>
+            </article>
+            <article class="tool">
+                <img src="restore-session.png" alt="Restore Session">
+                <h3>Restore Session</h3>
+            </article>
+            <article class="tool">
+                <img src="purge-linetypes.png" alt="Purge Linetypes">
+                <h3>Purge Linetypes</h3>
+            </article>
+        </div>
+    </section>
+
+    <section class="workflow">
+        <h2>BIM Pro in Revit</h2>
+        <p>
+            BIM Pro adds practical production and BIM-management tools directly to the
+            Revit interface, keeping commonly needed workflows close at hand.
+        </p>
+    </section>
+
+    <section class="support">
+        <h2>Support</h2>
+        <p>For BIM Pro support, contact: <a href="mailto:davidjimm1967@gmail.com">davidjimm1967@gmail.com</a></p>
+        <p>
+            BIM Pro is distributed through the Autodesk Marketplace. A 30-day local trial
+            is available before subscription entitlement is required.
+        </p>
+        <p><strong>Subscription pricing: $20/month or $150/year.</strong></p>
+    </section>
+</main>
+
+<footer>
+    © 2026 BIM Pro. All rights reserved.
+</footer>
+
+</body>
+</html>
