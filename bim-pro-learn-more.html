@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIM Pro | Revit Productivity Tools</title>
+<meta name="description" content="Learn more about BIM Pro for Autodesk Revit, including Workset Memory, automatic session restore, PDF/DWG Export, Pile Coordinates, Excel tools, and Purge Linetypes.">
+<style>
+:root{
+    --blue:#0759b7;
+    --dark:#09244f;
+    --light:#eef5fb;
+    --border:#dce4ec;
+    --text:#263238;
+    --muted:#667085;
+}
+*{box-sizing:border-box}
+body{
+    margin:0;
+    font-family:"Segoe UI",Arial,sans-serif;
+    color:var(--text);
+    background:#f5f7fa;
+    line-height:1.65;
+}
+.hero{
+    background:linear-gradient(135deg,#071b45 0%,#0759b7 58%,#12a8ef 100%);
+    color:#fff;
+    padding:58px 24px 64px;
+}
+.hero-inner{max-width:1050px;margin:auto}
+.badge{
+    display:inline-block;
+    padding:6px 13px;
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:999px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+}
+h1{font-size:52px;line-height:1.05;margin:18px 0 8px}
+.hero h2{font-size:25px;margin:0 0 18px;color:#fff}
+.hero p{max-width:820px;font-size:18px;color:#e8f5ff;margin:0}
+.container{max-width:1050px;margin:auto;padding:48px 24px}
+.intro{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:30px 32px;
+    box-shadow:0 4px 18px rgba(20,50,80,.06);
+}
+h2{color:var(--dark);font-size:31px;margin:0 0 13px}
+.intro p{font-size:18px;margin:0}
+.features{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+    margin-top:28px;
+}
+.card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:28px 30px;
+    box-shadow:0 4px 18px rgba(20,50,80,.06);
+}
+.icon{
+    width:48px;height:48px;border-radius:12px;
+    background:#e5f2ff;color:var(--blue);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:21px;margin-bottom:15px;
+}
+.card h3{font-size:22px;color:#173e72;margin:0 0 9px}
+.card p{margin:0 0 12px}
+.card ul{margin:8px 0 0;padding-left:21px}
+.card li{margin:5px 0}
+.highlight{
+    margin-top:28px;
+    background:linear-gradient(135deg,#edf7ff,#fff);
+    border-left:5px solid var(--blue);
+    border-radius:10px;
+    padding:20px 24px;
+}
+.highlight strong{color:#123b73}
+.section{margin-top:50px}
+.workflow{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:22px;
+}
+.step{
+    background:#fff;border:1px solid var(--border);
+    border-radius:14px;padding:23px;
+}
+.num{
+    color:var(--blue);font-weight:800;font-size:14px;
+    text-transform:uppercase;letter-spacing:.05em;
+}
+.step h3{margin:5px 0 7px;color:#173e72}
+.compat{
+    display:flex;flex-wrap:wrap;gap:10px;margin-top:17px
+}
+.compat span{
+    background:#e6f2ff;color:#0759b7;
+    padding:8px 13px;border-radius:999px;font-weight:700
+}
+.cta{
+    margin-top:50px;
+    background:#0b1f3a;color:#fff;
+    border-radius:17px;padding:34px;
+}
+.cta h2{color:#fff}
+.cta p{color:#dceaf6}
+.cta a{color:#8ed2ff}
+footer{
+    text-align:center;padding:30px 20px;
+    color:var(--muted);font-size:14px
+}
+@media(max-width:760px){
+    h1{font-size:42px}
+    .features,.workflow{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="badge">BIM Pro for Autodesk Revit</span>
+    <h1>Work smarter. Start where you left off.</h1>
+    <h2>Practical tools that make everyday Revit work faster.</h2>
+    <p>
+      BIM Pro is a Revit productivity toolkit built around the tasks users perform
+      repeatedly: restoring their workspace, remembering worksets, exporting drawings,
+      managing pile coordinates, moving schedules between Revit and Excel, and cleaning
+      up unwanted linetypes.
+    </p>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="intro">
+  <h2>What BIM Pro Does</h2>
+  <p>
+    BIM Pro adds a dedicated set of productivity tools directly to Revit. The emphasis
+    is simple: reduce repetitive clicks and setup work while keeping commonly needed
+    commands close at hand. Several BIM Pro features operate automatically in the
+    background, so users can simply work normally while BIM Pro remembers the information
+    needed for the next session.
+  </p>
+</section>
+
+<section class="section">
+  <h2>Revit Workspace &amp; Session Management</h2>
+
+  <div class="features">
+    <article class="card">
+      <div class="icon">↻</div>
+      <h3>Automatic Session Memory</h3>
+      <p>
+        BIM Pro automatically keeps track of the Revit views you have open while you work
+        and saves the most recent session for the active model when the model closes.
+      </p>
+      <ul>
+        <li>Remembers open non-template Revit views.</li>
+        <li>Stores the view information needed to restore the session.</li>
+        <li>Automatically attempts to restore the saved views when the model is opened again.</li>
+        <li>Helps you return to the same plans, sections, elevations, schedules, and 3D views.</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="icon">✓</div>
+      <h3>Save Session</h3>
+      <p>
+        Save Session remains available as a manual command when you want to immediately
+        save the current open-view session.
+      </p>
+      <ul>
+        <li>Useful when you want an immediate snapshot of your current workspace.</li>
+        <li>Replaces the previously saved session for the active model.</li>
+        <li>Normal use does not require manually saving before closing Revit because BIM Pro saves automatically.</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="icon">□</div>
+      <h3>Restore Session</h3>
+      <p>
+        Restore Session restores the views contained in the saved session for the active model.
+      </p>
+      <ul>
+        <li>Restores views that still exist in the project and can be opened by Revit.</li>
+        <li>Reports views that can no longer be opened.</li>
+        <li>Can close currently open tabs that are not part of the saved session when possible.</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="icon">W</div>
+      <h3>Workset Memory</h3>
+      <p>
+        BIM Pro automatically remembers the active user workset for each workshared Revit model
+        and restores it when the model is opened again.
+      </p>
+      <ul>
+        <li>No manual save or restore command is required.</li>
+        <li>When you change the active workset, BIM Pro updates the remembered workset.</li>
+        <li>Works with workshared models.</li>
+        <li>Does not change the active workset in non-workshared models.</li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="highlight">
+    <strong>The result:</strong> open your Revit project and get back to the workspace you were
+    using instead of rebuilding it every time.
+  </div>
+</section>
+
+<section class="section">
+  <h2>Drawing Production &amp; Coordination</h2>
+
+  <div class="features">
+    <article class="card">
+      <div class="icon">PDF</div>
+      <h3>PDF / DWG Export</h3>
+      <p>
+        Export selected Revit sheets to PDF, DWG, or both using the export settings available
+        in the current project.
+      </p>
+      <ul>
+        <li>Select one or more sheets.</li>
+        <li>Choose PDF, DWG, or PDF + DWG.</li>
+        <li>Select the available PDF and/or DWG export setup.</li>
+        <li>Choose an output folder.</li>
+        <li>Optionally add a revision suffix.</li>
+        <li>BIM Pro remembers the export folder, prefix, revision preference, and selected export setups for the project.</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="icon">PC</div>
+      <h3>Pile Coordinates</h3>
+      <p>
+        Pile Coordinates helps streamline pile identification, numbering, and coordinate/elevation
+        information within a Revit project.
+      </p>
+      <ul>
+        <li>Identifies pile members using BIM Pro's pile criteria, including PILE or PILING in Structure Name or MTO Bldg ID.</li>
+        <li>Optionally numbers piles.</li>
+        <li>Set a numbering prefix, starting number, and number of digits.</li>
+        <li>Choose North/South and West/East sorting order.</li>
+        <li>Writes Easting, Northing, Top of Pile, and Bott of Pile information to pile parameters.</li>
+        <li>Uses Piece Mark for pile numbering.</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="icon">⌁</div>
+      <h3>Purge Linetypes</h3>
+      <p>
+        Quickly clean unwanted imported line patterns from the current Revit document.
+      </p>
+      <ul>
+        <li>Uses BIM Pro's built-in filtering rules.</li>
+        <li>Removes line patterns whose names contain <strong>IMPORT</strong>.</li>
+        <li>Provides a focused cleanup command without requiring a larger project cleanup workflow.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Excel Tools</h2>
+
+  <div class="features">
+    <article class="card">
+      <div class="icon">XL</div>
+      <h3>Schedule → Excel</h3>
+      <p>
+        Export one or more Revit schedules to Excel workbooks for sharing, reporting,
+        analysis, or further editing.
+      </p>
+      <ul>
+        <li>Select the schedules to export.</li>
+        <li>Choose a destination folder.</li>
+        <li>BIM Pro creates an Excel workbook for each selected schedule.</li>
+        <li>Schedule headers, body data, and footer data are read from the Revit schedule.</li>
+        <li>File names are cleaned of characters that Windows does not allow.</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="icon">→R</div>
+      <h3>Excel → Revit</h3>
+      <p>
+        Bring an Excel worksheet into a Revit drafting view as a formatted table.
+      </p>
+      <ul>
+        <li>Choose the Excel workbook.</li>
+        <li>Select the worksheet.</li>
+        <li>Enter or confirm the Revit view name.</li>
+        <li>Choose whether the first row is a header.</li>
+        <li>Select an existing Revit Text Style.</li>
+        <li>Import the table into the drafting view.</li>
+      </ul>
+      <p>
+        The selected Revit Text Style controls the imported text appearance. BIM Pro does not
+        create a new text style for this operation.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Designed for Everyday Revit Work</h2>
+  <div class="workflow">
+    <div class="step">
+      <div class="num">01 — Open</div>
+      <h3>Get back to work</h3>
+      <p>Your saved Revit views and remembered workset can be restored without rebuilding your workspace.</p>
+    </div>
+    <div class="step">
+      <div class="num">02 — Produce</div>
+      <h3>Finish drawings faster</h3>
+      <p>Export PDF/DWG sheets, manage pile coordinates, and move schedule information between Revit and Excel.</p>
+    </div>
+    <div class="step">
+      <div class="num">03 — Clean</div>
+      <h3>Keep projects organized</h3>
+      <p>Use focused productivity commands such as Purge Linetypes to eliminate repetitive cleanup work.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Supported Revit Versions</h2>
+  <p>BIM Pro supports the following Windows 64-bit Revit releases:</p>
+  <div class="compat">
+    <span>Revit 2024</span>
+    <span>Revit 2025</span>
+    <span>Revit 2026</span>
+    <span>Revit 2027</span>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Spend Less Time Managing Revit.</h2>
+  <p>
+    BIM Pro is built around the small, repetitive tasks that add up over the course of a project.
+    By remembering your workspace and worksets and simplifying common production and data workflows,
+    BIM Pro helps you spend more time designing and less time setting up.
+  </p>
+  <p>
+    <strong>Support:</strong>
+    <a href="mailto:davidjimm1967@gmail.com">davidjimm1967@gmail.com</a>
+  </p>
+  <p>
+    <a href="https://davidjimm.github.io/privacy-policy.html">Privacy Policy</a>
+  </p>
+</section>
+
+</main>
+
+<footer>
+  © 2026 BIM Pro. All rights reserved.
+</footer>
+
+</body>
+</html>
