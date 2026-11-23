@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BIM Pro Privacy Policy</title>
+<title>Privacy Policy – BIM Pro and 3D Column Grid Marks</title>
 <style>
     body {
         margin: 0;
@@ -24,6 +24,10 @@
     h2 { color: #173e72; margin-top: 32px; }
     .date { color: #666; }
     a { color: #0759b7; }
+    table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+    th, td { border: 1px solid #d9dee5; padding: 8px 10px; text-align: left; vertical-align: top; }
+    th { background: #eef3f9; color: #173e72; }
+    code { background: #eef1f4; padding: 1px 5px; border-radius: 3px; }
     @media (max-width: 650px) {
         main { margin: 0; border-radius: 0; padding: 28px 22px; }
     }
@@ -31,51 +35,86 @@
 </head>
 <body>
 <main>
-    <h1>BIM Pro Privacy Policy</h1>
-    <p class="date"><strong>Effective Date:</strong> October 7, 2026</p>
+    <h1>Privacy Policy</h1>
+    <p class="date"><strong>Effective Date:</strong> November 23, 2026</p>
 
     <p>
-        This Privacy Policy explains how BIM Pro ("BIM Pro," "we," "us," or "our")
-        handles information in connection with the BIM Pro add-in for Autodesk Revit
-        and related services.
+        This Privacy Policy explains how David Imm ("we," "us," or "our") handles
+        information in connection with the following add-ins for Autodesk Revit
+        (each an "App," together the "Apps") and related services:
     </p>
+    <ul>
+        <li><strong>BIM Pro</strong></li>
+        <li><strong>3D Column Grid Marks</strong> (shown in Revit as the COL MARK tab)</li>
+    </ul>
 
     <h2>1. Information We Collect</h2>
     <p>
-        BIM Pro is a desktop add-in for Autodesk Revit. BIM Pro is designed to operate
+        The Apps are desktop add-ins for Autodesk Revit and are designed to operate
         primarily within the user's local Revit environment. We do not sell personal
         information and do not use information from Revit project files for advertising.
+        The Apps do not include analytics, tracking, or advertising code.
     </p>
     <p>
-        Depending on how BIM Pro is licensed and used, information that may be provided
+        Depending on how an App is licensed and used, information that may be provided
         to us or our service providers can include information necessary to identify
         and manage a user's subscription or entitlement, such as name, email address,
-        Autodesk Marketplace account information, subscription status, and technical
+        Autodesk App Store account information, subscription status, and technical
         information required to validate a license.
     </p>
+
+    <h2>2. License (Entitlement) Check</h2>
     <p>
-        BIM Pro may also store application settings and workflow information locally
-        on the user's computer, such as saved session and workset preferences. This
-        information is used to provide BIM Pro's functionality and is not collected
-        by us simply because it exists in a Revit project.
+        To confirm that a user has an active trial or subscription, each App sends the
+        Autodesk user ID of the account signed in to Revit, together with the App's
+        identifier, to Autodesk's App Store entitlement service
+        (<code>apps.autodesk.com</code>). Autodesk replies whether the account is entitled
+        to use the App. This request goes directly to Autodesk; it is not sent to us.
+        No Revit project data is included.
+    </p>
+    <p>
+        The result of the check is written to a log file on the user's own computer to
+        help diagnose licensing problems. This log can contain the Autodesk user ID and
+        is not sent to us unless the user chooses to share it for support.
     </p>
 
-    <h2>2. How We Use Information</h2>
+    <h2>3. Information Stored on Your Computer</h2>
+    <p>
+        The Apps store settings and workflow information locally on the user's computer.
+        This information is used only to provide the Apps' functionality and is not
+        collected by us.
+    </p>
+    <table>
+        <tr><th>App</th><th>Stored locally</th><th>Location</th></tr>
+        <tr>
+            <td>BIM Pro</td>
+            <td>Saved sessions, workset preferences, export settings, licensing log</td>
+            <td>Folders named <code>BIM Pro</code> / <code>BIM_Pro</code> under the user's AppData</td>
+        </tr>
+        <tr>
+            <td>3D Column Grid Marks</td>
+            <td>Grid Marks options, Auto Update on/off, marker family location, licensing log</td>
+            <td><code>%LOCALAPPDATA%\ColMark3D</code></td>
+        </tr>
+    </table>
+
+    <h2>4. How We Use Information</h2>
     <p>Information we receive is used only as reasonably necessary to:</p>
     <ul>
-        <li>Provide, activate, and manage BIM Pro subscriptions and trials;</li>
-        <li>Verify user entitlement to use BIM Pro;</li>
+        <li>Provide, activate, and manage App subscriptions and trials;</li>
+        <li>Verify user entitlement to use the Apps;</li>
         <li>Provide customer support and respond to requests;</li>
         <li>Maintain security and prevent unauthorized use;</li>
         <li>Diagnose technical problems when information is voluntarily provided by a user; and</li>
         <li>Meet legal and contractual obligations.</li>
     </ul>
 
-    <h2>3. Revit Project Data</h2>
+    <h2>5. Revit Project Data</h2>
     <p>
-        BIM Pro is not intended to collect or transmit the contents of a user's Revit
-        models, drawings, designs, or other project files to us. BIM Pro's local
-        workflow features operate on the user's computer.
+        The Apps are not intended to collect or transmit the contents of a user's Revit
+        models, drawings, designs, or other project files to us. Changes the Apps make
+        (for example, markers placed by 3D Column Grid Marks) are saved only in the
+        user's own Revit project.
     </p>
     <p>
         Users should not send project files or other confidential information to us
@@ -83,31 +122,32 @@
         by the user.
     </p>
 
-    <h2>4. Third-Party Services</h2>
+    <h2>6. Third-Party Services</h2>
     <p>
-        BIM Pro may rely on Autodesk Marketplace and third-party services for
+        The Apps rely on the Autodesk App Store and third-party services for
         subscription, entitlement, payment, hosting, or related functions. Information
         provided to those services is handled according to their respective privacy
-        policies and terms.
+        policies and terms, including the
+        <a href="https://www.autodesk.com/company/legal-notices-trademarks/privacy-statement">Autodesk Privacy Statement</a>.
     </p>
     <p>
-        Third-party service providers used by BIM Pro are expected to protect personal
+        Third-party service providers used by the Apps are expected to protect personal
         information consistent with applicable contractual and legal requirements.
     </p>
 
-    <h2>5. Data Retention</h2>
+    <h2>7. Data Retention</h2>
     <p>
         We retain personal information only for as long as reasonably necessary to
-        provide BIM Pro, administer subscriptions, provide support, comply with legal
+        provide the Apps, administer subscriptions, provide support, comply with legal
         obligations, resolve disputes, and enforce agreements.
     </p>
     <p>
-        Local BIM Pro settings and workflow information remain on the user's computer
-        unless the user removes them or they are removed as part of uninstalling or
-        resetting BIM Pro.
+        Local settings, workflow information, and licensing logs remain on the user's
+        computer until the user deletes them. Users can remove them at any time by
+        deleting the folders listed in Section 3.
     </p>
 
-    <h2>6. Data Deletion and User Requests</h2>
+    <h2>8. Data Deletion and User Requests</h2>
     <p>
         Users may request access to, correction of, or deletion of personal information
         held by us, subject to applicable law and legitimate business or legal
@@ -119,14 +159,14 @@
         reasonable period.
     </p>
 
-    <h2>7. Revoking Consent</h2>
+    <h2>9. Revoking Consent</h2>
     <p>
         Where processing is based on consent, users may withdraw that consent by
         contacting us. Withdrawing consent does not affect processing that was lawful
         before consent was withdrawn or processing that is permitted or required by law.
     </p>
 
-    <h2>8. Security</h2>
+    <h2>10. Security</h2>
     <p>
         We use reasonable administrative, technical, and organizational measures to
         protect personal information against unauthorized access, alteration,
@@ -134,25 +174,25 @@
         can be guaranteed to be completely secure.
     </p>
 
-    <h2>9. Children's Privacy</h2>
+    <h2>11. Children's Privacy</h2>
     <p>
-        BIM Pro is a professional software product and is not directed toward children.
+        The Apps are professional software products and are not directed toward children.
         We do not knowingly collect personal information from children.
     </p>
 
-    <h2>10. Changes to This Policy</h2>
+    <h2>12. Changes to This Policy</h2>
     <p>
         We may update this Privacy Policy when our practices or legal requirements
         change. The effective date at the top of this page indicates when the policy
         was most recently updated.
     </p>
 
-    <h2>11. Contact</h2>
+    <h2>13. Contact</h2>
     <p>
-        For privacy questions, requests, or concerns regarding BIM Pro, please contact:
+        For privacy questions, requests, or concerns regarding any of the Apps, please contact:
     </p>
     <p>
-        <strong>BIM Pro Support</strong><br>
+        <strong>David Imm – App Support</strong><br>
         <a href="mailto:davidjimm1967@gmail.com">davidjimm1967@gmail.com</a>
     </p>
 </main>
