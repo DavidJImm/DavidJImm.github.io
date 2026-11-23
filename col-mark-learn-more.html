@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Column Grid Marks | Revit Add-in</title>
+<meta name="description" content="3D Column Grid Marks (COL MARK) places grid-line marks on every structural column in Revit, kept up to date as columns and grids change.">
+<style>
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: #1f2937;
+        background: #f5f7fa;
+        line-height: 1.6;
+    }
+    .hero {
+        background: linear-gradient(135deg, #071b45 0%, #0759b7 55%, #12a8ef 100%);
+        color: white;
+        padding: 56px 24px 64px;
+    }
+    .hero-inner {
+        max-width: 1050px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 42px;
+    }
+    .logo {
+        width: 190px;
+        height: 190px;
+        border-radius: 34px;
+        flex: 0 0 auto;
+        box-shadow: 0 18px 45px rgba(0,0,0,.28);
+        background: #ffffff;
+        display: block;
+    }
+    h1 {
+        margin: 0 0 10px;
+        font-size: clamp(38px, 6vw, 58px);
+        line-height: 1.05;
+        letter-spacing: -.02em;
+    }
+    .tagline {
+        margin: 0;
+        font-size: clamp(20px, 3vw, 28px);
+        font-weight: 600;
+    }
+    .hero p {
+        margin: 18px 0 0;
+        max-width: 720px;
+        font-size: 17px;
+        color: #e7f4ff;
+    }
+    .container {
+        max-width: 1050px;
+        margin: 0 auto;
+        padding: 52px 24px;
+    }
+    h2 {
+        color: #123b73;
+        margin: 0 0 14px;
+        font-size: 32px;
+    }
+    .intro {
+        font-size: 18px;
+        max-width: 900px;
+    }
+    .versions {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 9px 16px;
+        border-radius: 999px;
+        background: #e6f2ff;
+        color: #0759b7;
+        font-weight: 700;
+    }
+    .tools {
+        margin-top: 46px;
+    }
+    .tool-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin-top: 24px;
+    }
+    .tool {
+        background: white;
+        border-radius: 16px;
+        padding: 22px 18px 20px;
+        box-shadow: 0 5px 20px rgba(16, 43, 76, .09);
+        text-align: center;
+        border: 1px solid #e5eaf0;
+    }
+    .tool svg {
+        width: 150px;
+        height: 125px;
+        margin: 0 auto 12px;
+        display: block;
+    }
+    .tool h3 {
+        margin: 0 0 6px;
+        color: #173e72;
+        font-size: 19px;
+    }
+    .tool p {
+        margin: 0;
+        font-size: 15px;
+        color: #4b5563;
+    }
+    .panel {
+        margin-top: 50px;
+        background: white;
+        border-radius: 18px;
+        padding: 30px;
+        box-shadow: 0 5px 20px rgba(16, 43, 76, .08);
+    }
+    .rule {
+        display: flex;
+        gap: 36px;
+        align-items: center;
+    }
+    .rule svg { flex: 0 0 auto; width: 300px; height: 260px; }
+    .rule ul { margin: 0; padding-left: 20px; }
+    .rule li { margin: 6px 0; }
+    .features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px 36px;
+        margin: 0;
+        padding-left: 20px;
+    }
+    ol.steps li { margin: 6px 0; }
+    .support {
+        margin-top: 44px;
+    }
+    footer {
+        background: #0b1f3a;
+        color: #dbe8f5;
+        text-align: center;
+        padding: 28px 20px;
+        font-size: 14px;
+    }
+    footer a { color: #9fd3ff; }
+    a { color: #0b67c2; }
+    @media (max-width: 760px) {
+        .hero-inner { flex-direction: column; text-align: center; }
+        .hero p { margin-left: auto; margin-right: auto; }
+        .tool-grid { grid-template-columns: 1fr 1fr; }
+        .rule { flex-direction: column; }
+        .features { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 500px) {
+        .tool-grid { grid-template-columns: 1fr; }
+        .logo { width: 160px; height: 160px; }
+    }
+</style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-inner">
+        <!-- Logo drawn inline. To use your own image instead, replace this <svg> with:
+             <img class="logo" src="col-mark-logo.png" alt="3D Column Grid Marks logo"> -->
+        <svg class="logo" viewBox="0 0 190 190" role="img" aria-label="3D Column Grid Marks logo">
+            <defs>
+                <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#e9f4ff"/>
+                    <stop offset="1" stop-color="#cfe6fb"/>
+                </linearGradient>
+            </defs>
+            <rect width="190" height="190" rx="34" fill="url(#lg)"/>
+            <!-- grid lines -->
+            <line x1="20" y1="150" x2="170" y2="150" stroke="#0759b7" stroke-width="2" stroke-dasharray="10 5 2 5"/>
+            <line x1="95" y1="20" x2="95" y2="172" stroke="#0759b7" stroke-width="2" stroke-dasharray="10 5 2 5"/>
+            <circle cx="95" cy="20" r="13" fill="#fff" stroke="#0759b7" stroke-width="2.5"/>
+            <text x="95" y="25.5" text-anchor="middle" font-family="Segoe UI, Arial" font-weight="700" font-size="15" fill="#0759b7">3</text>
+            <circle cx="170" cy="150" r="13" fill="#fff" stroke="#0759b7" stroke-width="2.5"/>
+            <text x="170" y="155.5" text-anchor="middle" font-family="Segoe UI, Arial" font-weight="700" font-size="15" fill="#0759b7">B</text>
+            <!-- column in 3D (W shape) -->
+            <polygon points="70,48 120,48 132,40 82,40" fill="#9aa9bb"/>
+            <rect x="70" y="48" width="50" height="10" fill="#5f6f84"/>
+            <rect x="91" y="58" width="8" height="78" fill="#7b8ba0"/>
+            <rect x="70" y="136" width="50" height="10" fill="#5f6f84"/>
+            <polygon points="120,48 132,40 132,50 120,58" fill="#46566b"/>
+            <polygon points="120,136 132,128 132,138 120,146" fill="#46566b"/>
+            <polygon points="99,58 111,50 111,128 99,136" fill="#5b6b80"/>
+            <!-- marks -->
+            <rect x="44" y="78" width="40" height="22" rx="5" fill="#12a8ef"/>
+            <text x="64" y="94" text-anchor="middle" font-family="Segoe UI, Arial" font-weight="700" font-size="15" fill="#fff">B</text>
+            <rect x="108" y="96" width="40" height="22" rx="5" fill="#071b45"/>
+            <text x="128" y="112" text-anchor="middle" font-family="Segoe UI, Arial" font-weight="700" font-size="15" fill="#fff">3</text>
+        </svg>
+        <div>
+            <h1>3D Column Grid Marks</h1>
+            <p class="tagline">Every column face shows its grid line, right in the model.</p>
+            <p>
+                3D Column Grid Marks (COL MARK) places grid-line marks on every structural
+                column in Revit, turned and sized to the column, and keeps them up to date
+                as columns and grids change. Steel connections never hide them.
+            </p>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section>
+        <h2>Built for Steel Column Coordination</h2>
+        <p class="intro">
+            Detailers, modelers and erectors need to know at a glance which grid line each
+            column face points to. 3D Column Grid Marks puts that answer on the column itself,
+            in 3D views, sections and exports, without editing your column families.
+        </p>
+        <div class="versions">Supports Revit 2024, 2025, 2026 &amp; 2027</div>
+    </section>
+
+    <section class="tools">
+        <h2>The COL MARK Tab</h2>
+        <div class="tool-grid">
+            <article class="tool">
+                <svg viewBox="0 0 150 125" aria-hidden="true">
+                    <rect x="62" y="14" width="26" height="98" rx="3" fill="#7b8ba0"/>
+                    <rect x="22" y="30" width="36" height="20" rx="4" fill="#12a8ef"/>
+                    <text x="40" y="45" text-anchor="middle" font-family="Segoe UI, Arial" font-weight="700" font-size="14" fill="#fff">B</text>
+                    <rect x="92" y="54" width="36" height="20" rx="4" fill="#071b45"/>
+                    <text x="110" y="69" text-anchor="middle" font-family="Segoe UI, Arial" font-weight="700" font-size="14" fill="#fff">3</text>
+                    <rect x="22" y="80" width="36" height="20" rx="4" fill="#12a8ef"/>
+                    <text x="40" y="95" text-anchor="middle" font-family="Segoe UI, Arial" font-weight="700" font-size="14" fill="#fff">B</text>
+                </svg>
+                <h3>Grid Marks</h3>
+                <p>Places or updates a marker on every column in the project, the active view, the selection, or columns you pick.</p>
+            </article>
+            <article class="tool">
+                <svg viewBox="0 0 150 125" aria-hidden="true">
+                    <path d="M75 22 a40 40 0 1 1 -38 28" fill="none" stroke="#0759b7" stroke-width="9" stroke-linecap="round"/>
+                    <polygon points="26,40 50,46 34,64" fill="#0759b7"/>
+                    <rect x="64" y="46" width="22" height="40" rx="3" fill="#7b8ba0"/>
+                    <rect x="88" y="54" width="22" height="14" rx="3" fill="#12a8ef"/>
+                </svg>
+                <h3>Auto Update</h3>
+                <p>Markers follow columns as they are placed, moved, rotated, resized or connected, and update when grids change.</p>
+            </article>
+            <article class="tool">
+                <svg viewBox="0 0 150 125" aria-hidden="true">
+                    <rect x="62" y="14" width="26" height="98" rx="3" fill="#7b8ba0"/>
+                    <rect x="22" y="44" width="36" height="20" rx="4" fill="#cbd5e1"/>
+                    <line x1="20" y1="40" x2="62" y2="70" stroke="#d64545" stroke-width="6" stroke-linecap="round"/>
+                    <line x1="62" y1="40" x2="20" y2="70" stroke="#d64545" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+                <h3>Remove Markers</h3>
+                <p>Clears the markers of the selected columns or the whole project. The columns themselves are never changed.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>How the Marks Read</h2>
+        <div class="rule">
+            <svg viewBox="0 0 300 260" role="img" aria-label="Plan of a W-shape column at grid B/3 showing WEB and FLG marks">
+                <line x1="20" y1="130" x2="270" y2="130" stroke="#0759b7" stroke-width="1.6" stroke-dasharray="12 5 2 5"/>
+                <line x1="150" y1="34" x2="150" y2="200" stroke="#0759b7" stroke-width="1.6" stroke-dasharray="12 5 2 5"/>
+                <circle cx="150" cy="20" r="14" fill="#fff" stroke="#0759b7" stroke-width="2"/>
+                <text x="150" y="26" text-anchor="middle" font-family="Segoe UI, Arial" font-weight="700" font-size="15" fill="#0759b7">3</text>
+                <circle cx="282" cy="130" r="14" fill="#fff" stroke="#0759b7" stroke-width="2"/>
+                <text x="282" y="136" text-anchor="middle" font-family="Segoe UI, Arial" font-weight="700" font-size="15" fill="#0759b7">B</text>
+                <!-- W shape in plan: flanges vertical, web horizontal along grid B -->
+                <rect x="118" y="100" width="10" height="60" fill="#5f6f84"/>
+                <rect x="172" y="100" width="10" height="60" fill="#5f6f84"/>
+                <rect x="128" y="126" width="44" height="8" fill="#7b8ba0"/>
+                <!-- WEB marks: on the web faces, read grid 3 (across the web) -->
+                <rect x="133" y="96" width="34" height="20" rx="4" fill="#071b45"/>
+                <text x="150" y="111" text-anchor="middle" font-family="Segoe UI, Arial" font-weight="700" font-size="13" fill="#fff">3</text>
+                <rect x="133" y="144" width="34" height="20" rx="4" fill="#071b45"/>
+                <text x="150" y="159" text-anchor="middle" font-family="Segoe UI, Arial" font-weight="700" font-size="13" fill="#fff">3</text>
+                <!-- FLG marks: on the flange faces, read grid B (along the web) -->
+                <rect x="78" y="120" width="34" height="20" rx="4" fill="#12a8ef"/>
+                <text x="95" y="135" text-anchor="middle" font-family="Segoe UI, Arial" font-weight="700" font-size="13" fill="#fff">B</text>
+                <rect x="188" y="120" width="34" height="20" rx="4" fill="#12a8ef"/>
+                <text x="205" y="135" text-anchor="middle" font-family="Segoe UI, Arial" font-weight="700" font-size="13" fill="#fff">B</text>
+                <text x="150" y="232" text-anchor="middle" font-family="Segoe UI, Arial" font-size="13" fill="#4b5563">Column at B/3, web along grid B</text>
+            </svg>
+            <div>
+                <p><strong>Each face shows the grid line you look along when you face it.</strong></p>
+                <ul>
+                    <li><strong>WEB</strong> &mdash; the nearest grid line that runs across the web.</li>
+                    <li><strong>FLG</strong> &mdash; the nearest grid line that runs along the web.</li>
+                    <li>Direction comes from the column's own geometry, so rotated and mirrored columns are marked correctly.</li>
+                    <li>Optionally add the offset when a column is off its grid, e.g. <strong>B (1'-6")</strong>.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>Features</h2>
+        <ul class="features">
+            <li>Works with W shapes, rectangular and square HSS, and round pipe</li>
+            <li>No special parameters needed in your column families</li>
+            <li>Markers are separate elements, so steel connections never hide them</li>
+            <li>Markers are pinned so they aren't moved by accident</li>
+            <li>Marks at low, middle and high heights, with overrides</li>
+            <li>Steel-only filter, swap WEB/FLG, skip off-grid columns</li>
+            <li>Clear report of placed, updated, unchanged and skipped columns</li>
+            <li>Each run is a single Undo step</li>
+        </ul>
+    </section>
+
+    <section class="panel">
+        <h2>Getting Started</h2>
+        <ol class="steps">
+            <li>Open a project with structural columns and straight grid lines.</li>
+            <li>Click <strong>COL MARK &gt; Grid Marks</strong>.</li>
+            <li>Choose the columns, set the options and click <strong>Update</strong>. The marker family loads automatically the first time.</li>
+            <li>Turn on <strong>Auto Update</strong> to keep markers in step while you model.</li>
+        </ol>
+        <p>Press <strong>F1</strong> on any COL MARK button for help.</p>
+    </section>
+
+    <section class="support">
+        <h2>Support</h2>
+        <p>For 3D Column Grid Marks support, contact: <a href="mailto:davidjimm1967@gmail.com">davidjimm1967@gmail.com</a></p>
+        <p>
+            Please include your app version (Version button on the COL MARK tab), your Revit
+            version, and a description of the issue.
+        </p>
+        <p>3D Column Grid Marks is distributed through the Autodesk App Store.</p>
+        <!-- Add your pricing and trial terms here, e.g.:
+        <p><strong>Subscription pricing: $X/month or $Y/year.</strong></p> -->
+    </section>
+</main>
+
+<footer>
+    © 2026 David Imm. All rights reserved. &nbsp;·&nbsp;
+    <a href="privacy-policy.html">Privacy Policy</a>
+</footer>
+
+</body>
+</html>
